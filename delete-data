@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Delete your Qualifire data</title>
+<meta name="description" content="How to delete the data of the Qualifire Android app.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="stylesheet" href="style.css">
+<script src="theme.js"></script>
+</head>
+<body>
+<header class="top"><a class="brand" href="index.html"><svg viewBox="130 150 540 540" aria-hidden="true"><circle cx="393" cy="393" r="118" fill="none" stroke="var(--ink)" stroke-width="30" stroke-linecap="round"/><line x1="428" y1="428" x2="525" y2="525" stroke="#F5C542" stroke-width="30" stroke-linecap="round"/></svg><span>QUALIFIRE</span></a><button class="toggle" id="theme" type="button">Day</button></header>
+<main class="wrap"><article>
+<h1>Delete your Qualifire data</h1>
+<p>Qualifire has no accounts and no sign-in. Your rides, routes, places and settings are stored only on your phone. They are never uploaded, so I hold no copy of them.</p>
+<h2>How to delete your data</h2>
+<ol>
+<li>Uninstall the Qualifire app. This deletes everything stored on your phone.</li>
+<li>Or, to keep the app but start empty: open Android Settings, then Apps, then Qualifire, then Storage, and choose Clear storage.</li>
+</ol>
+<h2>Crash reports</h2>
+<p>If the app crashes, it can send a crash report to Sentry (servers in the EU). A report contains the error, the app version, the Android version and the device model. It contains no name, no location and no rides, and Sentry is set not to store IP addresses, so it cannot be linked to you. Sentry deletes reports automatically after 30 days.</p>
+<h2>Questions or a manual request</h2>
+<p>Write to <a href="mailto:thequalifireapp@gmail.com">thequalifireapp@gmail.com</a> and I will help. See also the <a href="privacy.html">privacy policy</a>.</p>
+</article></main>
+<footer><div class="wrap"><a href="index.html">Home</a><a href="privacy.html">Privacy policy</a><a href="mailto:thequalifireapp@gmail.com">thequalifireapp@gmail.com</a>
+<p>Map data &copy; OpenStreetMap contributors, tiles by OpenFreeMap.</p></div></footer>
+</body>
+</html>
