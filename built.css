@@ -1,0 +1,93 @@
+/* "Built in" section: four options selectable by ?built=0|A|B|C (C20). Tokens from style.css. Default = 0, works without JS. */
+#built-in .bi-opt{display:none}
+#built-in[data-built="0"] .bi-0,#built-in[data-built="A"] .bi-A,#built-in[data-built="B"] .bi-B,#built-in[data-built="C"] .bi-C{display:block}
+#built-in{--ground:#0e0e11;--bar:rgba(190,188,180,.55);--grey:#9a978f}
+:root[data-theme="light"] #built-in{--ground:#EFEADA;--bar:rgba(90,86,76,.5);--grey:#6f6b60}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]) #built-in{--ground:#EFEADA;--bar:rgba(90,86,76,.5);--grey:#6f6b60}}
+/* night/day map images, same mechanism as .f-night/.f-day */
+.bi-d{display:none !important}
+:root[data-theme="light"] .bi-n{display:none !important}
+:root[data-theme="light"] .bi-d{display:block !important}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]) .bi-n{display:none !important}:root:not([data-theme="dark"]) .bi-d{display:block !important}}
+#built-in ul,#built-in ol{list-style:none;margin:0;padding:0}
+#built-in p{margin:0}
+#built-in strong{font-weight:800}
+/* option 0: icon grid */
+.bi0-grid{display:grid;gap:14px;grid-template-columns:1fr}
+.bi0-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:20px 20px 22px;color:var(--text2);min-width:0}
+.bi0-card strong{color:var(--ink)}
+.bi0-card p{font-size:1rem;line-height:1.5}
+.bi-ico{width:48px;height:48px;display:block;margin-bottom:12px;fill:none;stroke:var(--ink);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.bi-ico .y{stroke:var(--yellow)}
+.bi-ico .yf{fill:var(--yellow);stroke:none}
+:root[data-theme="light"] .bi-ico .y{stroke:#C99400}
+:root[data-theme="light"] .bi-ico .yf{fill:#C99400}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]) .bi-ico .y{stroke:#C99400}:root:not([data-theme="dark"]) .bi-ico .yf{fill:#C99400}}
+/* option A: map tiles */
+.biA-grid{display:grid;gap:14px;grid-template-columns:repeat(2,minmax(0,1fr))}
+.biA-tile{background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;min-width:0}
+.biA-vis{position:relative;aspect-ratio:480/300;background:var(--ground);overflow:hidden}
+.biA-vis img,.biA-vis .bi-ov{position:absolute;inset:0;width:100%;height:100%;display:block}
+.biA-vis img{object-fit:cover;max-width:none}
+.biA-tile p{padding:14px 14px 16px;color:var(--text2);font-size:.95rem;line-height:1.45}
+.biA-tile strong{display:block;color:var(--ink);margin-bottom:2px}
+#built-in .bi-cap{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center;margin-top:16px}
+.bi-cap .bi-ill,.biB-map .bi-ill{background:var(--card);color:var(--dim);border:1px solid var(--border);border-radius:999px;font-size:.78rem;font-weight:700;line-height:1;padding:7px 12px}
+.bi-credit{color:var(--dim);font-size:.72rem;line-height:1.25}
+/* overlay vocabulary (SVG, shared by A and B) */
+.bi-ov path,.biB-svg path{fill:none;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.r-c{stroke:#14120C;stroke-width:7px;opacity:.55}
+.r-y{stroke:var(--yellow);stroke-width:4px}
+.r-g{stroke:var(--grey);stroke-width:4px;opacity:.7}
+.r-gr{stroke:var(--green);stroke-width:4px}
+.r-p{stroke:var(--purple);stroke-width:4px}
+.dot-me{fill:var(--rider);stroke:#fff;stroke-width:3;vector-effect:non-scaling-stroke}
+.dot-e{fill:#fff;stroke:#14120C;stroke-width:2;vector-effect:non-scaling-stroke;opacity:.9}
+.dot-s{fill:#fff;stroke:#14120C;stroke-width:2;vector-effect:non-scaling-stroke}
+.dot-f{fill:var(--yellow);stroke:#14120C;stroke-width:2;vector-effect:non-scaling-stroke}
+.bar{fill:var(--bar)}
+.bar-y{fill:var(--yellow)}
+.bp{fill:var(--yellow)}
+.bp-t{fill:#0A0A0A;font:700 24px -apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+.hold-bg{fill:#0A0A0A;opacity:.72}
+.hold-ring{fill:none;stroke:#6d6b66;stroke-width:8}
+.hold-arc{stroke:var(--yellow) !important;stroke-width:8px !important}
+.hold-sq{fill:#fff}
+.ground{fill:var(--ground)}
+/* option B: annotated route */
+.biB-map{position:relative;aspect-ratio:1120/625;border-radius:16px;overflow:hidden;background:var(--ground);border:1px solid var(--border)}
+.biB-map img,.biB-svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+.biB-map img{object-fit:cover;max-width:none}
+.biB-map .bi-ill{position:absolute;top:12px;right:12px;z-index:2}
+.biB-map .bi-credit{position:absolute;left:12px;bottom:12px;z-index:2;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:5px 8px;max-width:calc(100% - 24px)}
+.biB-svg .r-c{stroke-width:9px}
+.biB-svg .r-y{stroke-width:6px}
+.biB-svg .ld{stroke:var(--ink);stroke-width:1.5;opacity:.7}
+.biB-svg .bl{fill:var(--ink);font:700 21px -apple-system,"Segoe UI",Roboto,Arial,sans-serif;paint-order:stroke;stroke:var(--ground);stroke-width:5px;stroke-linejoin:round}
+.biB-svg .badge{fill:var(--yellow);stroke:#14120C;stroke-width:2}
+.biB-svg .badge-t{dominant-baseline:central;fill:#0A0A0A;font:800 20px -apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+#built-in .biB-list{display:grid;gap:14px 32px;grid-template-columns:1fr;margin-top:24px}
+.biB-list li{display:grid;grid-template-columns:1.6rem 1fr;gap:10px;color:var(--text2);line-height:1.5}
+.biB-list strong{color:var(--ink)}
+.biB-list .n{color:var(--ytext);font-weight:800;font-size:1.1rem}
+/* option C: big type list */
+.biC-list{border-top:1px solid var(--border)}
+.biC-list li{display:grid;grid-template-columns:2.2rem 1fr;gap:2px 12px;padding:16px 0;border-bottom:1px solid var(--border);align-items:baseline}
+.biC-list .n{grid-row:1/3;font-weight:800;font-size:1.6rem;color:var(--dim);line-height:1.1}
+.biC-list strong{font-size:1.25rem;line-height:1.2;color:var(--ink)}
+.biC-list .d{color:var(--text2);font-size:1rem}
+@media (max-width:639px){.biB-svg .bl,.biB-svg .ld{display:none}.biB-svg .r-c{stroke-width:7px}.biB-svg .r-y{stroke-width:4px}.biB-svg .badge{r:30px}.biB-svg .badge-t{font-size:36px}.biB-map .bi-credit{font-size:.62rem}}
+@media (min-width:640px){
+.bi0-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.bi0-card:last-child{grid-column:1/-1}
+.biA-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+.biB-list{grid-template-columns:repeat(2,1fr)}
+.biC-list li{grid-template-columns:3rem minmax(0,20rem) 1fr;gap:0 16px}
+.biC-list .n{grid-row:auto}
+.biC-list strong{font-size:1.5rem}
+}
+@media (min-width:900px){
+.bi0-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+.biA-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+}
+@media (prefers-reduced-motion:reduce){#built-in *{animation:none !important;transition:none !important}}
