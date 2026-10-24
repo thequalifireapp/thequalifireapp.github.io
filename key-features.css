@@ -105,3 +105,39 @@ html:not(.js) #built-in .fd{display:block;padding-top:8px;border-top:1px solid v
 #built-in .fd .sp-ill{top:12px;right:12px}
 #built-in .fd .sp-credit{display:block;font-size:.72rem;padding:5px 8px}
 @media (max-width:639px){#built-in .fd .sp-vis{aspect-ratio:4/3}#built-in .fd .sp-vis .bi-ill{font-size:.72rem;padding:6px 10px}}
+
+/* round2: gates and the rider ring stay white in day mode too (as in the app). Live racing map as in the marketing card (yellow behind the rider, grey ahead, gate ticks, five yellow dots with day pills, blue rider) */
+#built-in .sp-ov .r-g{stroke:#8a8a93;stroke-width:6px}
+#built-in .sp-ov .gt{stroke:#fff;stroke-width:2px}
+#built-in .sp-ov .rd{fill:var(--yellow);stroke:#14120C;stroke-width:2px;vector-effect:non-scaling-stroke}
+#built-in .sp-ov .pl{fill:rgba(10,10,10,.88);stroke:#41414c;stroke-width:1.5px;vector-effect:non-scaling-stroke}
+#built-in .sp-ov .pt{fill:#f4f2ec;font:700 27px/1 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+:root[data-theme="light"] #built-in .sp-ov .r-g{stroke:#9a968b}
+:root[data-theme="light"] #built-in .sp-ov .pl{fill:rgba(250,247,238,.94);stroke:#c8c4ba}
+:root[data-theme="light"] #built-in .sp-ov .pt{fill:#201f24}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]) #built-in .sp-ov .r-g{stroke:#9a968b}:root:not([data-theme="dark"]) #built-in .sp-ov .pl{fill:rgba(250,247,238,.94);stroke:#c8c4ba}:root:not([data-theme="dark"]) #built-in .sp-ov .pt{fill:#201f24}}
+@media (max-width:639px){#built-in .sp-ov .r-g{stroke-width:3px}#built-in .sp-ov .gt{stroke-width:1.5px}}
+
+/* laptop: hover preview only (no detail page, no chevron, no "More"); a phone tap opens the detail page */
+@media (hover:hover) and (min-width:640px){#built-in .fc-chev,#built-in .fc-more-l{display:none}#built-in .fc-btn{cursor:default}}
+/* rider ring as thin as the dot rings; pill text size */
+#built-in .sp-ov .dot-me{stroke-width:2px}
+#built-in .sp-ov .pt{font-size:24px}
+/* card 4: the rolling window animation (script in key-features.js moves the bars) */
+#built-in .rw-art .rb{transform-box:fill-box;transform-origin:50% 100%;transition:transform .8s cubic-bezier(.5,0,.2,1),fill .6s,opacity .6s}
+@media (prefers-reduced-motion:reduce){#built-in .rw-art .rb{transition:none}}
+/* card 3: the lock: shackle lifts, swings open, pauses, clicks shut (4.5 s loop); still under reduced motion */
+#built-in .lA .ph,#built-in .lA .lk,#built-in .lA .sh{transform-box:view-box}
+#built-in .lA .sh{transform-origin:224px 148px;animation:shA 4.5s ease-in-out infinite}
+@keyframes shA{0%,20%{transform:translateY(0) rotate(0)}34%{transform:translateY(-16px) rotate(-24deg)}62%{transform:translateY(-16px) rotate(-24deg)}76%,100%{transform:translateY(0) rotate(0)}}
+@media (prefers-reduced-motion:reduce){#built-in .lA .sh{animation:none}}
+/* card 2: the activity pills as a loose flower (positions set in the page), the highlight picks one at random */
+#built-in .sp-pills{position:relative;display:block;align-self:stretch;flex:1 1 auto;width:100%;height:100%;gap:0}
+#built-in .sp-pills .sp-pill{position:absolute;transform:translate(-50%,-50%);white-space:nowrap}
+/* card 6: one way at a time lights up (line, pill and text); the script in key-features.js picks the way at random. Without script Calm stays lit. */
+#built-in .cE .a-line{opacity:.35}
+#built-in .cE .a-chip rect,#built-in .cE .a-line,#built-in .cE .a-ct text{transition:opacity .45s,fill .45s,stroke .45s}
+#built-in .cE .a-line.on{opacity:1}
+#built-in .cE .a-chip rect.on{fill:var(--yellow);stroke:var(--yellow)}
+#built-in .cE .a-ct text.on{fill:#0A0A0A}
+@media (prefers-reduced-motion:reduce){#built-in .cE *{transition:none}}

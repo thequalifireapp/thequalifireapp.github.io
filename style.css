@@ -50,8 +50,6 @@ section.block{padding:64px 0}
 .priv{display:grid;gap:24px;align-items:center}
 .priv svg{width:120px;height:auto;fill:none;stroke:var(--ink);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
 .priv ul{padding-left:20px;color:var(--text2)}
-footer{padding:28px 0 56px;border-top:1px solid var(--border);color:var(--dim);font-size:.88rem}
-footer a{margin-right:14px}
 .todo{background:#f5c54233;border-bottom:2px dashed var(--yellow);padding:0 3px}
 article{max-width:760px;padding-top:24px}
 article p,article li{color:var(--text2)}
@@ -103,3 +101,47 @@ html{scroll-behavior:auto}
 .ways .pin{fill:var(--yellow);stroke:var(--ink);stroke-width:2;stroke-linejoin:round}
 .ways .pin-dot{fill:var(--race)}
 @media (min-width:900px){.rk{grid-template-columns:minmax(0,520px) 1fr;gap:56px}.rk-caps{min-height:9rem}}
+
+/* round2: ranking table restyled like the real app (cycle 27 round6 02_ranking): no phone frame.
+   Same markup ids and animation (tower.js unchanged). Tier tint = tier colour 18% over the card, solid bar kept. */
+.rk-card{--rh:3.1rem;--pad:20px;--line:rgba(255,255,255,.09);padding:20px 0 0;border-radius:22px;overflow:hidden;max-width:540px;border:1px solid var(--border)}
+:root[data-theme="light"] .rk-card{--line:rgba(0,0,0,.09)}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]) .rk-card{--line:rgba(0,0,0,.09)}}
+.rk-hdr{font-size:1.1rem;letter-spacing:0;color:var(--ink);font-weight:700;margin:0 0 14px;padding:0 var(--pad)}
+.rk-hdr i{font-style:normal;color:var(--dim);margin:0 .15em}
+.rk-rows{height:calc(var(--rh)*10);overflow:hidden;font-variant-numeric:tabular-nums}
+.rk-rows::before{content:"";position:absolute;left:var(--pad);right:var(--pad);top:0;height:calc(var(--rh)*10 - 2px);pointer-events:none;
+  background:repeating-linear-gradient(to bottom,transparent 0,transparent calc(var(--rh) - 1px),var(--line) calc(var(--rh) - 1px),var(--line) var(--rh))}
+.rk-n{left:var(--pad);width:2.8rem;font-weight:700;color:var(--dim);font-size:1.05rem;z-index:3}
+.rk-row{left:calc(var(--pad) + 2.8rem);right:var(--pad)}
+.rk-who{font-weight:500;color:var(--dim);font-size:1.05rem}
+.rk-time{font-weight:600;font-size:1.3rem;color:var(--text2)}
+.rk-row.today{left:0;right:0;padding:0 var(--pad) 0 calc(var(--pad) + 2.8rem);z-index:2;color:var(--ink);
+  background:color-mix(in srgb,var(--tc,var(--green)) 18%,transparent);box-shadow:inset 5px 0 0 var(--tc,var(--green))}
+.rk-row.today .rk-who{color:var(--ink);font-weight:700}
+.rk-row.today .rk-time{color:var(--ink);font-weight:700}
+.rk-row.today:not([data-tier="1"]):not([data-tier="2"]):not([data-tier="3"]){background:none;box-shadow:none}
+.rk-avg{left:var(--pad);right:var(--pad);top:calc(var(--rh)*5 - 1px);z-index:1}
+
+/* phones block (03_phones round3, shipped 2026-10-24): final store cards (cycle 27 round6/cards) as the phones block. Cards are fixed art; day/night only changes the page. */
+#screens{padding:56px 0}
+#screens .wrap{max-width:1360px}
+.phrow{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;align-items:start}
+.ph{--y:0px;--s:1;transform:translateY(var(--y)) scale(var(--s));transition:transform .28s cubic-bezier(.2,.7,.2,1),box-shadow .28s;position:relative;z-index:1;margin:0;border-radius:16px;overflow:hidden;border:1px solid var(--border);box-shadow:0 18px 40px -20px rgba(0,0,0,.55);aspect-ratio:9/16;background:var(--card)}
+.ph img{display:block;width:100%;height:100%;object-fit:cover}
+.ph:nth-child(even){--y:28px}
+@media (hover:hover) and (min-width:900px){.ph:hover{--s:1.14;z-index:5;box-shadow:0 30px 60px -18px rgba(0,0,0,.65)}}
+@media (max-width:899px){
+ #screens .wrap{padding:0}
+ .phrow{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:8px 16px 24px;-webkit-overflow-scrolling:touch}
+ .ph{flex:0 0 78%;max-width:330px;scroll-snap-align:center;--y:0px}
+ .phrow::-webkit-scrollbar{display:none}.phrow{scrollbar-width:none}
+ }
+/* status + minimal footer (05_status-footer round3) */
+#status{padding:72px 0 64px}
+.ft{padding:20px 0 28px;border-top:1px solid var(--border);color:var(--dim);font-size:.8rem}
+.ft .wrap{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:10px 24px}
+.ft nav{display:flex;flex-wrap:wrap;gap:6px 20px}
+.ft a{color:var(--text2);text-decoration:none;margin:0}
+.ft a:hover,.ft a:focus-visible{color:var(--ink);text-decoration:underline}
+.ft p{margin:0}
