@@ -127,7 +127,7 @@ html:not(.js) #built-in .fd{display:block;padding-top:8px;border-top:1px solid v
 #built-in .rw-art .rb{transform-box:fill-box;transform-origin:50% 100%;transition:transform .8s cubic-bezier(.5,0,.2,1),fill .6s,opacity .6s}
 @media (prefers-reduced-motion:reduce){#built-in .rw-art .rb{transition:none}}
 /* card 3: the lock: shackle lifts, swings open, pauses, clicks shut (4.5 s loop); still under reduced motion */
-#built-in .lA .ph,#built-in .lA .lk,#built-in .lA .sh{transform-box:view-box}
+#built-in .lA .lph,#built-in .lA .lk,#built-in .lA .sh{transform-box:view-box}
 #built-in .lA .sh{transform-origin:224px 148px;animation:shA 4.5s ease-in-out infinite}
 @keyframes shA{0%,20%{transform:translateY(0) rotate(0)}34%{transform:translateY(-16px) rotate(-24deg)}62%{transform:translateY(-16px) rotate(-24deg)}76%,100%{transform:translateY(0) rotate(0)}}
 @media (prefers-reduced-motion:reduce){#built-in .lA .sh{animation:none}}
