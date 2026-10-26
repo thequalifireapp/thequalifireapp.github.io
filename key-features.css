@@ -82,6 +82,7 @@
 #built-in .sp-body .fc-s{font-size:.8125rem;line-height:1.35}
 #built-in .sp-body .fc-chev{display:none}
 #built-in .fc-ov{display:none}
+#built-in .sp-body::after{content:'Learn more \203A';display:block;margin-top:8px;font-size:.8125rem;font-weight:800;color:var(--ytext)}
 #built-in .a-line{stroke-width:12}
 #built-in .sp-pill{padding:.55em 1em}
 #built-in .fc-cap{display:block;font-size:.75rem;color:var(--dim);margin:14px 0 0;line-height:1.4}
