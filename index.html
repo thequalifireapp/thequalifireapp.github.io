@@ -6,7 +6,7 @@
 <title>Qualifire | Same route. New meaning.</title>
 <meta name="description" content="Same route. New meaning. Android. Closed test on Google Play.">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
-<link rel="stylesheet" href="style.css?v=20261026a">
+<link rel="stylesheet" href="style.css?v=20261026b">
 <link rel="stylesheet" href="built.css?v=20261026a">
 <link rel="stylesheet" href="key-features.css?v=20261026a">
 <script src="theme.js?v=20261026a"></script>
@@ -41,14 +41,32 @@
 
 <section class="block" id="status"><div class="wrap">
 <div class="label">Status</div>
-<h2>Android only. Internal Google Play testing.</h2>
-<p>Open testing / iOS coming soon. Write to <a href="mailto:thequalifireapp@gmail.com">thequalifireapp@gmail.com</a>.</p>
-<p>Questions or feedback: same address.</p>
+<h2>Android only.</h2>
+<p class="st-lead">Qualifire is in testing on Google Play, open for 100 testers. Want to join?</p>
+<button type="button" class="st-btn" id="apply-btn" aria-expanded="false" aria-controls="apply-form">Apply to join the testing</button>
+<form class="st-form" id="apply-form" data-endpoint="https://script.google.com/macros/s/AKfycbwCrIKi8K1EWKfp8PsiWikagBOG5JpcITMp7Ny53pOhzdne70lJHXgQ5ppt4hfw7h87og/exec" hidden>
+<div class="st-q"><label for="ap-use">What would you use Qualifire for?</label>
+<textarea id="ap-use" name="use" rows="3" maxlength="1000" required></textarea></div>
+<fieldset class="st-q"><legend>How often would you use it?</legend>
+<div class="st-chips">
+<label class="st-chip"><input type="radio" name="freq" value="less than once a week" required><span>Less than once a week</span></label>
+<label class="st-chip"><input type="radio" name="freq" value="1-2 times a week"><span>1 to 2 times a week</span></label>
+<label class="st-chip"><input type="radio" name="freq" value="3-4 times a week"><span>3 to 4 times a week</span></label>
+<label class="st-chip"><input type="radio" name="freq" value="5 or more times a week"><span>5 or more times a week</span></label>
+</div></fieldset>
+<div class="st-q"><label for="ap-email">Your email</label>
+<input id="ap-email" name="email" type="email" autocomplete="email" maxlength="200" required></div>
+<div class="st-hp" aria-hidden="true"><label>Leave empty<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+<button type="submit" class="st-btn" id="apply-send">Send application</button>
+<p class="st-msg" id="apply-msg" role="status" aria-live="polite"></p>
+</form>
+<p class="st-small">iOS coming soon. Questions or feedback, write to <a href="mailto:thequalifireapp@gmail.com">thequalifireapp@gmail.com</a>.</p>
 </div></section>
 <script type="application/json" id="route-data">{"viewBox":[1920,1080],"points":[[660.6,923.9],[681.1,905.4],[682.5,905.3],[686.2,909.8],[687.3,909.5],[756.1,858.3],[782.7,851.9],[830.8,830.8],[835.8,833.8],[843.7,835.4],[855.7,836.1],[859.1,834.4],[932.8,755.3],[959.5,732.7],[969.9,726.5],[988.1,706.7],[989.4,696.9],[988.5,693.0],[977.8,684.6],[959.0,677.6],[954.9,679.7],[950.7,679.5],[915.9,667.4],[914.6,663.5],[921.1,648.8],[922.1,642.9],[925.2,640.3],[926.5,640.7],[978.3,661.6],[986.8,656.2],[1060.8,595.2],[1064.7,589.7],[1088.6,537.8],[1099.0,520.6],[1123.0,490.1],[1131.4,476.9],[1148.9,456.1],[1160.5,436.7],[1164.0,434.7],[1190.6,431.8],[1195.4,428.9],[1243.7,377.2],[1250.9,359.6],[1268.0,338.3]],"gates":[0,0.25,0.5,0.75,1]}</script>
 <script src="hero.js?v=20261026a" defer></script>
 <script src="tower.js?v=20261026a" defer></script>
 <script src="key-features.js?v=20261026a" defer></script>
+<script src="apply.js?v=20261026b" defer></script>
 </main>
 <footer class="ft"><div class="wrap"><nav><a href="privacy.html">Privacy policy</a><a href="delete-data.html">Delete your data</a><a href="mailto:thequalifireapp@gmail.com">thequalifireapp@gmail.com</a></nav>
 <p>Map data &copy; OpenStreetMap contributors, tiles by OpenFreeMap.</p></div></footer>
