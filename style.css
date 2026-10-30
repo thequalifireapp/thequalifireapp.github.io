@@ -169,3 +169,13 @@ html{scroll-behavior:auto}
 .ft a{color:var(--text2);text-decoration:none;margin:0}
 .ft a:hover,.ft a:focus-visible{color:var(--ink);text-decoration:underline}
 .ft p{margin:0}
+
+#status .st-lead{margin-bottom:6px}
+#status .st-left{max-width:60ch;margin:0 0 20px;color:var(--text2);font-size:1.05rem;line-height:1.5}
+#status .st-left strong{color:var(--ink);font-weight:800}
+#socials .soc{display:flex;flex-wrap:wrap;gap:12px;margin-top:14px}
+#socials .soc a{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 20px;border:1px solid var(--border);background:var(--card);color:var(--ink);border-radius:999px;font-weight:800;font-size:.95rem;text-decoration:none}
+#socials .soc a:hover,#socials .soc a:focus-visible{border-color:var(--yellow)}
+#socials .soc a:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+#socials .soc svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+#socials .soc svg .dot,#socials .soc svg .fill{fill:currentColor;stroke:none}
