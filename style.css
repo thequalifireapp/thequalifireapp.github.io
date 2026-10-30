@@ -7,7 +7,8 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,"S
 a{color:var(--ytext)}
 img,svg{max-width:100%}
 .wrap{max-width:1080px;margin:0 auto;padding:0 16px}
-header.top{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;max-width:1080px;margin:0 auto;height:64px}
+header.top{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;box-sizing:border-box;height:48px;margin:0;padding:6px max(16px,calc((100% - 1048px)/2));background:var(--bg);border-bottom:1px solid transparent;transition:border-color .2s}
+header.top.scrolled{border-bottom-color:var(--border)}
 .brand{display:flex;align-items:center;gap:10px;color:var(--ink);text-decoration:none;font-weight:800;letter-spacing:.2em;font-size:.82rem}
 .brand img{height:28px;width:auto}
 .f-day{display:none}
@@ -19,7 +20,7 @@ header.top{display:flex;align-items:center;justify-content:space-between;padding
 h1{font-size:clamp(2.2rem,6vw,4rem);line-height:1.02;margin:0 0 .35em;font-weight:800;letter-spacing:-.03em}
 h2{font-size:1.6rem;margin:0 0 .6em;font-weight:800;letter-spacing:-.01em;line-height:1.15}
 section.block{padding:64px 0}
-.hero{position:relative;min-height:calc(100svh - 64px);overflow:hidden;display:flex;align-items:flex-end;background:var(--race)}
+.hero{position:relative;min-height:calc(100svh - 48px);overflow:hidden;display:flex;align-items:flex-end;background:var(--race)}
 .hero-bg,.hero-bg img,#hero-map{position:absolute;inset:0;width:100%;height:100%}
 .hero-bg img{object-fit:cover;display:block}
 .hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:60%;background:linear-gradient(to bottom,transparent,var(--bg) 92%);pointer-events:none}

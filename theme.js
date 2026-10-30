@@ -13,6 +13,7 @@
     }
   }
   document.addEventListener('DOMContentLoaded',function(){
+    var hd=document.querySelector('header.top');if(hd){var sc=function(){hd.classList.toggle('scrolled',window.scrollY>8)};addEventListener('scroll',sc,{passive:true});sc()}
     var b=document.getElementById('theme');if(!b)return;
     function label(){b.textContent=cur()==='light'?'Night':'Day'}
     label();maps();
