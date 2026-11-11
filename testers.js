@@ -7,3 +7,12 @@ document.addEventListener('touchstart',function(e){var t=e.touches[0];down=true;
 document.addEventListener('touchmove',function(e){if(!down)return;var t=e.touches[0];at(t.clientX,t.clientY)},{passive:true});
 ['touchend','touchcancel'].forEach(function(n){document.addEventListener(n,end,{passive:true})});
 })();
+/* Live numbers: the Google Apps Script (data-endpoint of the apply form) returns total, testers and places left from the Stats tab of the spreadsheet. The typed numbers in index.html stay if this cannot be read. */
+(function(){var f=document.getElementById('apply-form'),EP=f&&f.getAttribute('data-endpoint');if(!EP||!window.fetch)return;
+function ok(n){return typeof n==='number'&&isFinite(n)&&n>=0&&n===Math.floor(n)}
+function set(k,t){var e=document.querySelector('[data-stat="'+k+'"]');if(e)e.textContent=t}
+fetch(EP+'?stats=1').then(function(r){return r.json()}).then(function(d){
+ if(!d||!ok(d.total)||!ok(d.testers)||!ok(d.left))return;
+ set('testers',d.testers);set('total',d.total);
+ set('left',d.left===1?'1 place left':d.left===0?'No places left':d.left+' places left')
+}).catch(function(){})})();
