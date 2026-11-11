@@ -14,5 +14,9 @@ function set(k,t){var e=document.querySelector('[data-stat="'+k+'"]');if(e)e.tex
 fetch(EP+'?stats=1').then(function(r){return r.json()}).then(function(d){
  if(!d||!ok(d.total)||!ok(d.testers)||!ok(d.left))return;
  set('testers',d.testers);set('total',d.total);
- set('left',d.left===1?'1 place left':d.left===0?'No places left':d.left+' places left')
+ set('left',d.left===1?'1 place left':d.left===0?'No places left':d.left+' places left');
+ var b=d.bars,rows=document.querySelectorAll('.bars .bar');
+ if(b&&b.length===4&&rows.length===4&&b.every(ok)){var mx=Math.max.apply(null,b);
+  for(var i=0;i<4;i++){var n=rows[i].querySelectorAll('.l span')[1],fill=rows[i].querySelector('.t i');
+   if(n)n.textContent=b[i];if(fill)fill.style.setProperty('--w',(mx?Math.round(b[i]/mx*100):0)+'%')}}
 }).catch(function(){})})();
