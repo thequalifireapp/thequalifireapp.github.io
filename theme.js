@@ -1,6 +1,7 @@
 (function(){
   var r=document.documentElement,k='qualifire-theme';
   try{var s=localStorage.getItem(k);if(s)r.setAttribute('data-theme',s)}catch(e){}
+  if(!r.getAttribute('data-theme'))r.setAttribute('data-theme',matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');
   function cur(){var t=r.getAttribute('data-theme');if(t)return t;return matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'}
   function maps(){
     var d=cur()==='light'?'day':'night';
