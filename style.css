@@ -180,3 +180,42 @@ html{scroll-behavior:auto}
 #socials .soc a:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
 #socials .soc svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 #socials .soc svg .dot,#socials .soc svg .fill{fill:currentColor;stroke:none}
+
+/* ===== round3 hero v2 (2026-11-08): site map + mini race on the route. Laptop numbers by default, phone numbers up to 700 px. ===== */
+@font-face{font-family:'Poppins';font-weight:700;font-display:swap;src:url('assets/fonts/Poppins-Bold.woff') format('woff')}
+@font-face{font-family:'Poppins';font-weight:500;font-display:swap;src:url('assets/fonts/Poppins-Medium.woff') format('woff')}
+@font-face{font-family:'Lato';font-weight:700;font-display:swap;src:url('assets/fonts/Lato-Bold.woff') format('woff')}
+.brand.wm{gap:3px;font:700 .95rem Poppins,sans-serif;letter-spacing:.2em}
+.brand.wm .qh{height:28px;width:auto;flex:none;transform:translateY(-3px)}
+.h2wrap{container-type:inline-size}
+.hero2{--yel:#F5C542;--veil:10,10,10;--tx:0;--ty:0;--ts:.6;--nx:10;--fh:14;position:relative;height:calc(100svh - 48px);overflow:hidden;background:var(--race);font-family:Poppins,sans-serif}
+:root[data-theme="light"] .hero2{--yel:#C48600;--veil:253,252,249;--race:#FDFCF9}
+.hero2::after{content:"";position:absolute;left:0;right:0;bottom:0;height:calc(var(--fh)*1%);background:linear-gradient(to bottom,transparent,var(--bg) 96%);pointer-events:none;z-index:4}
+.hero2 .sw{position:absolute;left:0;top:0;width:100%;height:100%;transform-origin:50% 50%;-webkit-mask-image:linear-gradient(to right,transparent,#000 6%,#000 94%,transparent),linear-gradient(to bottom,transparent,#000 6%,#000 94%,transparent);-webkit-mask-composite:source-in;mask-image:linear-gradient(to right,transparent,#000 6%,#000 94%,transparent),linear-gradient(to bottom,transparent,#000 6%,#000 94%,transparent);mask-composite:intersect}
+.hero2 .sm{display:none;position:absolute;inset:0;background-size:cover;background-position:center}
+.hero2 .sm.n{display:block;background-image:url('assets/hero-wide-night.webp')}.hero2 .sm.d{background-image:url('assets/hero-wide-day.webp')}
+:root[data-theme="light"] .hero2 .sm.n{display:none}:root[data-theme="light"] .hero2 .sm.d{display:block}
+.hero2 .sr{display:block;position:absolute;inset:0;width:100%;height:100%;z-index:1}
+.hero2 .sr .sc,.hero2 .sr .sg,.hero2 .sr .sy,.hero2 .sr .tc,.hero2 .sr .tk,.hero2 .sr .ss{fill:none;stroke-linecap:round;stroke-linejoin:round}
+.hero2 .sr .sc,.hero2 .sr .tc{stroke:#14120C}.hero2 .sr .sg{stroke:#F5C542}.hero2 .sr .tk{stroke:#fff}
+.hero2 .sr .sy,.hero2 .sr .sc2{display:none}
+.hero2 .sr .hd{stroke:#14120C}.hero2 .sr .hr{fill:#2F7DE1;stroke:#fff}
+.hero2 .sr .hp{fill:rgba(10,10,10,.9);stroke:#41414c;stroke-width:1.2px}.hero2 .sr .ht{fill:#f4f2ec;font:700 12px/1 Lato,system-ui,sans-serif}
+:root[data-theme="light"] .hero2 .sr .hp{fill:rgba(250,247,238,.94);stroke:#c8c4ba}:root[data-theme="light"] .hero2 .sr .ht{fill:#201f24}
+.hero2 .txt{position:absolute;z-index:5;left:7cqw;top:50%;transform:translateY(-50%);text-align:left;translate:calc(var(--tx)*1px) calc(var(--ty)*1px)}
+.hero2 .txt h1{margin:0;font-size:.95rem;font-weight:700;line-height:1.05;text-transform:uppercase;letter-spacing:.2em;color:var(--yel);position:relative;left:calc(var(--nx)*1px)}
+.hero2 .txt p{margin:.25em 0 0;font-size:calc(clamp(2.4rem,7cqw,5.6rem)*var(--ts));font-weight:700;line-height:1.05;color:var(--ink)}
+.hero2 .txt .l2{display:block}
+@media (max-width:700px){
+ .hero2{--tx:30;--ty:70;--ts:1;--nx:0;--fh:20}
+ .hero2 .txt{top:clamp(28px,9vh,96px);transform:none;text-align:center}
+}
+.hero2.in .txt h1{animation:h2rise .9s cubic-bezier(.2,.7,.2,1) .15s both}
+.hero2.in .txt p{animation:h2rise .9s cubic-bezier(.2,.7,.2,1) .45s both}
+@keyframes h2rise{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.hero2 .txt h1,.hero2 .txt p{animation:none !important}}
+
+/* hero text higher on phone */
+@media (max-width:700px){body .hero2{--ty:8}}
+/* ranking caption centred when stacked */
+@media (max-width:899px){body .rk-side{text-align:center}body .rk-cap{align-items:center;text-align:center}}

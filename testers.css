@@ -1,0 +1,20 @@
+/* Testers section (#t7): "Help me get ready for public release", the 14 testers number, usage bars, moving pills. */
+.ns#t7 .tsub{max-width:820px;font-size:1.1rem;line-height:1.55;color:var(--text2);margin-bottom:26px}.ns#t7 .tsub::after{content:"";display:block;clear:both}.ns#t7 .n14{float:left;font-weight:800;letter-spacing:-.05em;margin:-.04em 20px 0 0;font-size:9rem;line-height:.78;color:var(--ink)}.ns#t7 .cap{display:block;font-size:1.7rem;line-height:1.1;font-weight:800;color:var(--ink);letter-spacing:-.02em;margin:0 0 12px}.ns#t7 .cap em{font-style:normal;color:var(--ytier)}@media (max-width:560px){.ns#t7 .n14{font-size:6.5rem;margin-right:14px}.ns#t7 .cap{font-size:1.35rem}}.ns#t7 .tg>.card:first-child>p,.ns#t7 .rc>p{margin:0 0 14px!important;font-size:.78rem!important;font-weight:800!important;letter-spacing:.08em;text-transform:uppercase;color:var(--dim)!important}.ns#t7 .bar .l{font-size:.92rem;font-weight:500;color:var(--text2)}.ns#t7 .bar .l span:last-child{font-weight:800;color:var(--ink)}.ns#t7 .lane .pill2{font-weight:500;font-size:1rem}
+.ns .btn{border:0;cursor:pointer;font:inherit;font-weight:800}
+.ns .ns-form{margin-top:18px}
+#t7 #status.ns-form{padding:0}
+section#t7{padding-top:48px}
+@media (max-width:700px){section#t7{padding-top:32px}}
+body #t7 .tg{gap:0}
+body #t7 .tg>.card{background:none!important;border:0!important;border-radius:0!important;padding:0 36px 0 0!important}
+body #t7 .tg>.card+.card{border-left:1px solid var(--border)!important;padding:0 0 0 36px!important}
+@media (max-width:700px){
+body #t7 .tg>.card,body #t7 .tg>.card+.card{padding:0!important;border-left:0!important}
+body #t7 .tg>.card+.card{border-top:1px solid var(--border)!important;padding-top:22px!important;margin-top:22px}
+}
+/* touch: tapped pill lights up and pauses its lane */
+.ns .pill2.hot{background:var(--yellow);border-color:var(--yellow);color:#0A0A0A}
+.ns .lanes.hold .lane{animation-play-state:paused}
+@media (min-width:701px){
+#t7 h2{display:none}
+}

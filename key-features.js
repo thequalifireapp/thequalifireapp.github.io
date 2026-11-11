@@ -118,3 +118,28 @@
     upd();
   });
 })();
+/* Sheet-style cards: text layer that slides up over the picture, and press-and-hold on phone. */
+(function(){
+function build(){document.querySelectorAll('#built-in .fc').forEach(function(c){
+ var btn=c.querySelector('.fc-btn');if(!btn||btn.querySelector('.fc-ov2'))return;
+ var t=c.querySelector('.fc-t'),sb=c.querySelector('.fc-s'),ln=c.querySelector('.fc-lines');if(!t||!ln)return;
+ var o=document.createElement('span');o.className='fc-ov2';o.setAttribute('aria-hidden','true');
+ o.innerHTML='<span class="t">'+t.innerHTML+'</span><span class="s">'+(sb?sb.innerHTML:'')+'</span><span class="fc-lines">'+ln.innerHTML+'</span>';
+ btn.appendChild(o)})}
+function rt(){document.querySelectorAll('#built-in .fc').forEach(function(c){var b=c.querySelector('.fc-btn'),sp=c.querySelector('.sp-body');if(!b||!sp)return;
+ c.style.setProperty('--rt',Math.max(0,Math.round(sp.getBoundingClientRect().top-b.getBoundingClientRect().top))+'px')})}
+function go(){build();rt()}
+go();addEventListener('load',go);addEventListener('resize',rt);
+if(document.fonts&&document.fonts.ready)document.fonts.ready.then(rt);
+})();
+/* phone: while a finger is on a Key features card its text sheet shows (also while scrolling); lifting the finger shows the picture again. No delay. */
+(function(){var mq=matchMedia('(max-width:639px)'),open=null;
+function close(){if(open){open.classList.remove('open');open=null}}
+function card(e){return mq.matches&&e.target.closest?e.target.closest('#built-in .fc'):null}
+function show(c){if(!c)return;if(open&&open!==c)close();c.classList.add('open');open=c}
+document.addEventListener('touchstart',function(e){show(card(e))},{passive:true});
+['touchend','touchcancel'].forEach(function(t){document.addEventListener(t,close,{passive:true})});
+['mouseup','dragstart'].forEach(function(t){addEventListener(t,close,true)});
+document.addEventListener('click',function(e){if(mq.matches&&e.target.closest&&e.target.closest('#built-in .fc-btn'))e.preventDefault()},true);
+document.addEventListener('contextmenu',function(e){if(mq.matches&&e.target.closest&&e.target.closest('#built-in .fc'))e.preventDefault()});
+})();

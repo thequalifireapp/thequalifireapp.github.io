@@ -142,3 +142,36 @@ html:not(.js) #built-in .fd{display:block;padding-top:8px;border-top:1px solid v
 #built-in .cE .a-chip rect.on{fill:var(--yellow);stroke:var(--yellow)}
 #built-in .cE .a-ct text.on{fill:#0A0A0A}
 @media (prefers-reduced-motion:reduce){#built-in .cE *{transition:none}}
+
+/* round3 (2026-11-07): Live racing loop (card 1) + Ranking loop. Values = Nathan's settings from preview A/B, casing/gates as in the app (ROUTE-KIT.md). */
+#built-in svg.kf-live .r-c{stroke:#14120C !important;opacity:1 !important;stroke-width:9px !important;stroke-linecap:round;stroke-linejoin:round}
+#built-in svg.kf-live .r-g{stroke:var(--yellow) !important;opacity:1 !important;stroke-width:6px !important;stroke-linecap:round;stroke-linejoin:round}
+#built-in svg.kf-live .gt-c{stroke:#14120C;stroke-width:7px !important;stroke-linecap:round;fill:none}
+#built-in svg.kf-live .gt{stroke:#fff;stroke-width:4px !important;stroke-linecap:round;fill:none}
+#built-in svg.kf-live .rd,#built-in svg.kf-live .dot-me{stroke-width:1.75px !important}
+.rk-card{--rh:2.4rem}
+@media (max-width:899px){.rk{gap:6px}.rk-caps{min-height:5.4rem}.rk-cap{justify-content:flex-start}.rk-cap b{font-size:clamp(1.7rem,7vw,2.2rem)}.rk-cap span{font-size:1.05rem;margin-top:2px}}
+
+/* Sheet-style cards: the sheet is dragged up over the picture (text layer, same colour, handle at its top edge); title and subtitle stay at the bottom */
+section#built-in{padding-bottom:48px}
+@media (max-width:700px){section#built-in{padding-bottom:32px}}
+body #built-in .sp-body{margin-top:0;border-radius:22px 22px 0 0;background:var(--card);position:relative;z-index:4;padding:28px 52px 16px 22px}
+body #built-in .fc-btn::after{content:"";position:absolute;left:0;right:0;top:var(--rt,62%);height:24px;background:var(--ground);z-index:3;pointer-events:none}
+body #built-in .fc.open .fc-btn::after{opacity:0}
+body #built-in .sp-body::before,body #built-in .fc-ov2::before{content:"";position:absolute;top:10px;left:50%;width:40px;height:4px;margin-left:-20px;border-radius:2px;background:var(--dim);opacity:.45;transition:opacity .2s}
+body #built-in .sp-body .fc-chev{top:30px}
+body #built-in .fc-ov{display:none!important}
+body #built-in .fc-ov2{display:block;position:absolute;left:0;right:0;top:0;height:calc(var(--rt,62%) + 24px);z-index:3;background:var(--card);border-radius:22px 22px 0 0;padding:36px 22px 40px;box-sizing:border-box;overflow:auto;pointer-events:none;opacity:0;visibility:hidden;transform:translateY(var(--rt,62%));transition:transform .38s cubic-bezier(.2,.8,.2,1),opacity 0s .38s,visibility 0s .38s}
+body #built-in .fc.open .fc-ov2{opacity:1;visibility:visible;transform:none;transition:transform .38s cubic-bezier(.2,.8,.2,1),opacity 0s,visibility 0s}
+body #built-in .fc-ov2 .t,body #built-in .fc-ov2 .s{display:none}
+body #built-in .fc-ov2 .fc-lines{display:block;margin:0;padding:0;border:0}
+body #built-in .fc.open .sp-body::before{opacity:0}
+@media (max-width:639px){body #built-in .sp-body{padding:22px 10px 8px}body #built-in .sp-body .fc-chev{top:22px}}
+/* key features on phone: no "Learn more", no subpage; press and hold shows the text sheet, release shows the picture again */
+@media (max-width:639px){
+body #built-in .sp-body::after{display:none!important}
+body #built-in .fc-ov2{display:block!important;padding:28px 12px 10px}
+body #built-in .fc-ov2 .fc-lines,body #built-in .fc-ov2 .fc-lines *{font-size:.75rem!important;line-height:1.32!important}
+body #built-in .fc-ov2 .fc-lines p{margin:0 0 .45em}
+body #built-in .fc-btn{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent}
+}

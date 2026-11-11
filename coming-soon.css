@@ -1,0 +1,10 @@
+/* Coming soon section (#soon-na): band background, the three cards, notify-me forms. */
+section#soon-na{padding-top:64px;padding-bottom:64px}
+@media (max-width:700px){section#soon-na{padding-top:48px;padding-bottom:48px}}
+body #soon-na{background:var(--card)!important;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+body #soon-na .cs .card{background:none!important;border:0!important;border-radius:0!important;padding:0 32px!important}
+body #soon-na .cs .card:first-child{padding-left:0!important}
+body #soon-na .cs .card+.card{border-left:1px solid var(--border)!important}
+@media (max-width:700px){
+body #soon-na .cs .card{padding:18px 0!important;border-left:0!important}
+body #soon-na .cs .card+.card{border-left:0!important;border-top:1px solid var(--border)!important}}

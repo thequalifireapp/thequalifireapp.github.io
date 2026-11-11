@@ -1,0 +1,19 @@
+/* About section (#about-m1): Behind Qualifire, the moving Q, facts list. Phone: small Q floated right with the text wrapping round it. */
+section#about-m1{padding-top:64px;padding-bottom:64px}
+@media (max-width:700px){section#about-m1{padding-top:48px;padding-bottom:48px}}
+/* about: small Q floated right, text wraps round it (like the big 14 in Testers) */
+@media (max-width:760px){
+body .ns .ab{display:block}
+body .ns .ab>.vis{float:right;display:block;width:128px;height:128px;margin:4px 0 6px 14px;shape-outside:circle(50%);transform:none!important;font-size:inherit!important}
+body .ns .ab>.vis .qa{width:128px!important;height:128px!important}
+body .ns .ab>div:not(.vis){display:block}
+body .ns .ab .facts{clear:both}
+body .ns .ab .fl{clear:both}
+}
+#about-m1{touch-action:pan-y}
+@media (min-width:701px){
+#about-m1 h2,#about-m1 .fl{transform:translate(6px,0)}
+#about-m1 p.sub{transform:translate(6px,0);max-width:605px;color:var(--text2)}
+#about-m1 .facts li span,#about-m1 .facts li svg{transform:translate(6px,0)}
+#about-m1 .vis{transform:scale(.98)}
+}
