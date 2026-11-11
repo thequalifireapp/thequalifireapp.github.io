@@ -1,0 +1,4 @@
+/* Invitation page (join.html): not linked from the site, not indexed. */
+.join{padding:48px 0 64px;max-width:560px}
+.join .jbtn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 28px;border-radius:999px;background:var(--yellow);color:#0A0A0A;font-weight:800;text-decoration:none}
+.join .jsmall{color:var(--dim);font-size:.9rem;margin-top:28px}
