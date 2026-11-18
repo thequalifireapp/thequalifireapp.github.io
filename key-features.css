@@ -175,3 +175,8 @@ body #built-in .fc-ov2 .fc-lines,body #built-in .fc-ov2 .fc-lines *{font-size:.7
 body #built-in .fc-ov2 .fc-lines p{margin:0 0 .45em}
 body #built-in .fc-btn{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent}
 }
+/* round4: phone, lifting the finger from a Key features card. The text sheet now fades out where it is (no slide down), so nothing shows beneath the title and sentence. Opening still slides up. */
+@media (max-width:639px){
+body #built-in .fc-ov2{transition:opacity .16s ease,transform 0s linear .16s,visibility 0s linear .16s}
+body #built-in .fc.open .fc-ov2{transition:transform .38s cubic-bezier(.2,.8,.2,1),opacity 0s,visibility 0s}
+}
