@@ -1,0 +1,177 @@
+/* Key features (final, round7 / C25). Depends on style.css (tokens, .wrap, .label, .block) and built.css (#built-in tokens, .bi-n/.bi-d night-day images, .r-c/.r-y/.dot-me, .bi-ill, .bi-credit).
+   Load AFTER built.css. Everything is scoped to #built-in so nothing else on the page changes. */
+#built-in .sp-grid{display:grid;gap:18px;grid-template-columns:repeat(3,minmax(0,1fr));list-style:none;margin:0;padding:0}
+#built-in .sp-card{background:var(--card);border:1px solid var(--border);border-radius:20px;overflow:hidden;display:flex;flex-direction:column;min-width:0;position:relative}
+#built-in .sp-vis{position:relative;display:block;aspect-ratio:4/3;background:var(--ground);overflow:hidden;container-type:inline-size}
+#built-in .sp-vis img,#built-in .sp-ov{position:absolute;inset:0;width:100%;height:100%;display:block}
+#built-in .sp-vis img{object-fit:cover;max-width:none}
+#built-in .sp-ov path{fill:none;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+#built-in .sp-ov .r-c{stroke-width:9px}#built-in .sp-ov .r-y{stroke-width:6px}
+#built-in .sp-e{fill:#fff;fill-opacity:.5;stroke:#fff;stroke-opacity:.8;stroke-width:2;vector-effect:non-scaling-stroke}
+:root[data-theme="light"] #built-in .sp-e{fill:#fff;fill-opacity:.8;stroke:#14120C;stroke-opacity:.7}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]) #built-in .sp-e{fill:#fff;fill-opacity:.8;stroke:#14120C;stroke-opacity:.7}}
+#built-in .sp-ill{position:absolute;top:12px;right:12px;z-index:2}
+#built-in .sp-credit{position:absolute;left:10px;bottom:10px;z-index:2;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:4px 7px;max-width:calc(100% - 20px)}
+#built-in .sp-vis .bi-ill{background:var(--card);color:var(--dim);border:1px solid var(--border);border-radius:999px;font-size:.72rem;font-weight:700;line-height:1;padding:6px 10px}
+#built-in .sp-vis2{display:flex;align-items:center;justify-content:center;padding:6%}
+/* card 2: sport pills. Font never below 11px; the row wraps onto 2-4 lines, no pill is dropped */
+#built-in .sp-pills{display:flex;flex-wrap:wrap;gap:clamp(5px,2.6cqw,11px);justify-content:center;max-width:100%}
+#built-in .sp-pill{display:inline-block;border:1px solid var(--border);background:var(--card);color:var(--text2);border-radius:999px;padding:.6em 1.1em;font-weight:700;font-size:clamp(11px,4.6cqw,17px);line-height:1;transition:background-color .35s ease,border-color .35s ease,color .35s ease}
+#built-in .sp-pill.on{background:var(--yellow);border-color:var(--yellow);color:#0A0A0A}
+#built-in .sp-art{display:block;width:100%;height:100%;max-height:100%}
+#built-in .a-st{fill:none;stroke:var(--ink);stroke-width:5}
+#built-in .a-y{fill:none;stroke:var(--yellow);stroke-width:9;stroke-linecap:round}
+#built-in .a-yf{fill:var(--yellow);stroke:none}
+#built-in .a-bg{fill:var(--ground)}
+#built-in .a-line{fill:none;stroke:var(--yellow);stroke-width:10;stroke-linecap:round}
+#built-in .a-ring{fill:none;stroke:var(--rider);stroke-width:4;opacity:.45}
+#built-in .a-me{fill:var(--rider);stroke:#fff;stroke-width:4}
+#built-in .a-ring2{fill:var(--ground);stroke:var(--ink);stroke-width:5}
+#built-in .a-dim{opacity:.35}
+#built-in .a-chip rect{fill:var(--card);stroke:var(--border);stroke-width:2}#built-in .a-chip rect.on{fill:var(--yellow);stroke:var(--yellow)}
+#built-in .a-ct text{fill:var(--text2);font:700 28px -apple-system,'Segoe UI',Roboto,Arial,sans-serif}#built-in .a-ct text.on{fill:#0A0A0A}
+#built-in .rw-bar{fill:var(--bar)}#built-in .rw-out{fill:var(--bar);opacity:.3}#built-in .rw-bar-y{fill:var(--yellow)}
+#built-in .rw-in{fill:none;stroke:var(--bar);stroke-width:2;stroke-dasharray:5 5}
+#built-in .rw-base{stroke:var(--border);stroke-width:2}
+#built-in .rw-t{fill:var(--text2);font:700 32px -apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+#built-in .rw-arr{fill:none;stroke:var(--dim);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+
+/* the whole card is ONE link to the detail page (same tab) */
+#built-in .fc-btn{display:flex;flex-direction:column;flex:1;width:100%;min-height:44px;margin:0;padding:0;color:inherit;text-decoration:none;-webkit-tap-highlight-color:transparent;position:relative}
+#built-in .fc-btn:focus-visible{outline:3px solid var(--yellow);outline-offset:-3px;border-radius:20px}
+#built-in .fc-chev{width:22px;height:22px;flex:none;fill:none;stroke:var(--dim);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;transition:transform .2s}
+#built-in .fc-btn:hover .fc-chev,#built-in .fc.open .fc-chev{stroke:var(--ytext);transform:translateX(3px)}
+
+/* title + ONE sentence */
+#built-in .sp-body{display:block;position:relative;padding:20px 52px 24px 22px}
+#built-in .sp-body .fc-t{display:block;font-size:1.3rem;font-weight:800;letter-spacing:-.01em;line-height:1.15;color:var(--ink);margin:0 0 8px}
+#built-in .sp-body .fc-t em{font-style:italic}
+#built-in .sp-body .fc-s{display:block;color:var(--text2);font-size:1rem;line-height:1.5}
+#built-in .sp-body .fc-chev{position:absolute;right:18px;top:22px}
+
+/* hover / focus preview: text over the picture, laptop only, no layout shift */
+#built-in .fc-ov{position:absolute;inset:0;z-index:3;background:var(--card);display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:0;padding:18px 22px;overflow:auto;opacity:0;visibility:hidden;pointer-events:none;transform:translateY(8px);transition:opacity .2s ease,transform .2s ease,visibility 0s linear .2s}
+#built-in .fc.open .fc-ov{opacity:1;visibility:visible;transform:none;transition:opacity .2s ease,transform .2s ease,visibility 0s}
+#built-in .fc-lines{display:block}
+#built-in .fc-p{display:block;color:var(--text2);line-height:1.45;font-size:.98rem}
+#built-in .fc-p+.fc-p{margin-top:8px}
+#built-in .fc-more-l{display:inline-block;margin-top:12px;font-weight:800;color:var(--ytext);border-bottom:2px solid var(--yellow);padding-bottom:1px}
+#built-in .fc-cap{display:none}
+
+@media (prefers-reduced-motion:reduce){
+#built-in .fc-ov,#built-in .fc-chev,#built-in .sp-pill{transition:none !important}}
+
+/* tablet 640-899: 2 columns */
+@media (min-width:640px) and (max-width:899px){#built-in .sp-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (min-width:900px){#built-in .sp-credit{font-size:.62rem}}
+
+/* PHONE (<640): FINAL = two compact columns, the whole card is the link, no preview overlay.
+   Sizes: title >= 15px, sentence >= 13px, pills >= 11px, Illustration tag >= 10px, caption >= 12px.
+   The map credit moves out of the small card into one caption line under the grid. */
+@media (max-width:639px){
+#built-in .sp-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+#built-in .sp-card{border-radius:16px}
+#built-in .sp-vis{aspect-ratio:1/1}
+#built-in .sp-vis2{padding:4%}
+#built-in .sp-ov .r-c{stroke-width:5px}#built-in .sp-ov .r-y{stroke-width:3px}
+#built-in .sp-ill{top:6px;right:6px}
+#built-in .sp-vis .bi-ill{font-size:.65rem;padding:4px 7px}
+#built-in .sp-credit{display:none}
+#built-in .sp-body{padding:10px 10px 14px}
+#built-in .sp-body .fc-t{font-size:1rem;margin:0 0 4px}
+#built-in .sp-body .fc-s{font-size:.8125rem;line-height:1.35}
+#built-in .sp-body .fc-chev{display:none}
+#built-in .fc-ov{display:none}
+#built-in .sp-body::after{content:'Learn more \203A';display:block;margin-top:8px;font-size:.8125rem;font-weight:800;color:var(--ytext)}
+#built-in .a-line{stroke-width:12}
+#built-in .sp-pill{padding:.55em 1em}
+#built-in .fc-cap{display:block;font-size:.75rem;color:var(--dim);margin:14px 0 0;line-height:1.4}
+}
+@media (max-width:359px){#built-in .sp-body .fc-t{font-size:.9375rem}#built-in .sp-body .fc-s{font-size:.8125rem}}
+@media (min-width:480px) and (max-width:639px){#built-in .sp-vis{aspect-ratio:4/3}#built-in .sp-body .fc-t{font-size:1.05rem}#built-in .sp-body .fc-s{font-size:.9rem}}
+
+/* detail page (feature.html?f=1..6) */
+#built-in .fd-wrap{max-width:760px}
+#built-in .fd{display:none;margin:0 0 28px}
+html:not(.js) #built-in .fd{display:block;padding-top:8px;border-top:1px solid var(--border);margin-top:24px}
+.js #built-in .fd.on{display:block}
+#built-in .fd-vis{border:1px solid var(--border);border-radius:20px;overflow:hidden;max-width:560px;margin-bottom:22px;background:var(--ground)}
+#built-in .fd-t{font-size:clamp(1.8rem,5vw,2.6rem);line-height:1.08;margin:0 0 .3em;font-weight:800;letter-spacing:-.02em}
+#built-in .fd-t em{font-style:italic}
+#built-in .fd-s{font-size:1.2rem;color:var(--ink);margin:0 0 20px;line-height:1.4}
+#built-in .fd-lines p{margin:0 0 10px;color:var(--text2);font-size:1.05rem;line-height:1.5}
+#built-in .fd-back{margin:0 0 20px}
+#built-in .fd-back a{font-weight:700;display:inline-flex;align-items:center;min-height:44px}
+#built-in .fd-back2{margin-top:30px}
+#built-in .fd .sp-ill{top:12px;right:12px}
+#built-in .fd .sp-credit{display:block;font-size:.72rem;padding:5px 8px}
+@media (max-width:639px){#built-in .fd .sp-vis{aspect-ratio:4/3}#built-in .fd .sp-vis .bi-ill{font-size:.72rem;padding:6px 10px}}
+
+/* round2: gates and the rider ring stay white in day mode too (as in the app). Live racing map as in the marketing card (yellow behind the rider, grey ahead, gate ticks, five yellow dots with day pills, blue rider) */
+#built-in .sp-ov .r-g{stroke:#8a8a93;stroke-width:6px}
+#built-in .sp-ov .gt{stroke:#fff;stroke-width:2px}
+#built-in .sp-ov .rd{fill:var(--yellow);stroke:#14120C;stroke-width:2px;vector-effect:non-scaling-stroke}
+#built-in .sp-ov .pl{fill:rgba(10,10,10,.88);stroke:#41414c;stroke-width:1.5px;vector-effect:non-scaling-stroke}
+#built-in .sp-ov .pt{fill:#f4f2ec;font:700 27px/1 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+:root[data-theme="light"] #built-in .sp-ov .r-g{stroke:#9a968b}
+:root[data-theme="light"] #built-in .sp-ov .pl{fill:rgba(250,247,238,.94);stroke:#c8c4ba}
+:root[data-theme="light"] #built-in .sp-ov .pt{fill:#201f24}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]) #built-in .sp-ov .r-g{stroke:#9a968b}:root:not([data-theme="dark"]) #built-in .sp-ov .pl{fill:rgba(250,247,238,.94);stroke:#c8c4ba}:root:not([data-theme="dark"]) #built-in .sp-ov .pt{fill:#201f24}}
+@media (max-width:639px){#built-in .sp-ov .r-g{stroke-width:3px}#built-in .sp-ov .gt{stroke-width:1.5px}}
+
+/* laptop: hover preview only (no detail page, no chevron, no "More"); a phone tap opens the detail page */
+@media (hover:hover) and (min-width:640px){#built-in .fc-chev,#built-in .fc-more-l{display:none}#built-in .fc-btn{cursor:default}}
+/* rider ring as thin as the dot rings; pill text size */
+#built-in .sp-ov .dot-me{stroke-width:2px}
+#built-in .sp-ov .pt{font-size:24px}
+/* card 4: the rolling window animation (script in key-features.js moves the bars) */
+#built-in .rw-art .rb{transform-box:fill-box;transform-origin:50% 100%;transition:transform .8s cubic-bezier(.5,0,.2,1),fill .6s,opacity .6s}
+@media (prefers-reduced-motion:reduce){#built-in .rw-art .rb{transition:none}}
+/* card 3: the lock: shackle lifts, swings open, pauses, clicks shut (4.5 s loop); still under reduced motion */
+#built-in .lA .lph,#built-in .lA .lk,#built-in .lA .sh{transform-box:view-box}
+#built-in .lA .sh{transform-origin:224px 148px;animation:shA 4.5s ease-in-out infinite}
+@keyframes shA{0%,20%{transform:translateY(0) rotate(0)}34%{transform:translateY(-16px) rotate(-24deg)}62%{transform:translateY(-16px) rotate(-24deg)}76%,100%{transform:translateY(0) rotate(0)}}
+@media (prefers-reduced-motion:reduce){#built-in .lA .sh{animation:none}}
+/* card 2: the activity pills as a loose flower (positions set in the page), the highlight picks one at random */
+#built-in .sp-pills{position:relative;display:block;align-self:stretch;flex:1 1 auto;width:100%;height:100%;gap:0}
+#built-in .sp-pills .sp-pill{position:absolute;transform:translate(-50%,-50%);white-space:nowrap}
+/* card 6: one way at a time lights up (line, pill and text); the script in key-features.js picks the way at random. Without script Calm stays lit. */
+#built-in .cE .a-line{opacity:.35}
+#built-in .cE .a-chip rect,#built-in .cE .a-line,#built-in .cE .a-ct text{transition:opacity .45s,fill .45s,stroke .45s}
+#built-in .cE .a-line.on{opacity:1}
+#built-in .cE .a-chip rect.on{fill:var(--yellow);stroke:var(--yellow)}
+#built-in .cE .a-ct text.on{fill:#0A0A0A}
+@media (prefers-reduced-motion:reduce){#built-in .cE *{transition:none}}
+
+/* round3 (2026-11-07): Live racing loop (card 1) + Ranking loop. Values = Nathan's settings from preview A/B, casing/gates as in the app (ROUTE-KIT.md). */
+#built-in svg.kf-live .r-c{stroke:#14120C !important;opacity:1 !important;stroke-width:9px !important;stroke-linecap:round;stroke-linejoin:round}
+#built-in svg.kf-live .r-g{stroke:var(--yellow) !important;opacity:1 !important;stroke-width:6px !important;stroke-linecap:round;stroke-linejoin:round}
+#built-in svg.kf-live .gt-c{stroke:#14120C;stroke-width:7px !important;stroke-linecap:round;fill:none}
+#built-in svg.kf-live .gt{stroke:#fff;stroke-width:4px !important;stroke-linecap:round;fill:none}
+#built-in svg.kf-live .rd,#built-in svg.kf-live .dot-me{stroke-width:1.75px !important}
+.rk-card{--rh:2.4rem}
+@media (max-width:899px){.rk{gap:6px}.rk-caps{min-height:5.4rem}.rk-cap{justify-content:flex-start}.rk-cap b{font-size:clamp(1.7rem,7vw,2.2rem)}.rk-cap span{font-size:1.05rem;margin-top:2px}}
+
+/* Sheet-style cards: the sheet is dragged up over the picture (text layer, same colour, handle at its top edge); title and subtitle stay at the bottom */
+section#built-in{padding-bottom:48px}
+@media (max-width:700px){section#built-in{padding-bottom:32px}}
+body #built-in .sp-body{margin-top:0;border-radius:22px 22px 0 0;background:var(--card);position:relative;z-index:4;padding:28px 52px 16px 22px}
+body #built-in .fc-btn::after{content:"";position:absolute;left:0;right:0;top:var(--rt,62%);height:24px;background:var(--ground);z-index:3;pointer-events:none}
+body #built-in .fc.open .fc-btn::after{opacity:0}
+body #built-in .sp-body::before,body #built-in .fc-ov2::before{content:"";position:absolute;top:10px;left:50%;width:40px;height:4px;margin-left:-20px;border-radius:2px;background:var(--dim);opacity:.45;transition:opacity .2s}
+body #built-in .sp-body .fc-chev{top:30px}
+body #built-in .fc-ov{display:none!important}
+body #built-in .fc-ov2{display:block;position:absolute;left:0;right:0;top:0;height:calc(var(--rt,62%) + 24px);z-index:3;background:var(--card);border-radius:22px 22px 0 0;padding:36px 22px 40px;box-sizing:border-box;overflow:auto;pointer-events:none;opacity:0;visibility:hidden;transform:translateY(var(--rt,62%));transition:transform .38s cubic-bezier(.2,.8,.2,1),opacity 0s .38s,visibility 0s .38s}
+body #built-in .fc.open .fc-ov2{opacity:1;visibility:visible;transform:none;transition:transform .38s cubic-bezier(.2,.8,.2,1),opacity 0s,visibility 0s}
+body #built-in .fc-ov2 .t,body #built-in .fc-ov2 .s{display:none}
+body #built-in .fc-ov2 .fc-lines{display:block;margin:0;padding:0;border:0}
+body #built-in .fc.open .sp-body::before{opacity:0}
+@media (max-width:639px){body #built-in .sp-body{padding:22px 10px 8px}body #built-in .sp-body .fc-chev{top:22px}}
+/* key features on phone: no "Learn more", no subpage; press and hold shows the text sheet, release shows the picture again */
+@media (max-width:639px){
+body #built-in .sp-body::after{display:none!important}
+body #built-in .fc-ov2{display:block!important;padding:28px 12px 10px}
+body #built-in .fc-ov2 .fc-lines,body #built-in .fc-ov2 .fc-lines *{font-size:.75rem!important;line-height:1.32!important}
+body #built-in .fc-ov2 .fc-lines p{margin:0 0 .45em}
+body #built-in .fc-btn{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent}
+}
