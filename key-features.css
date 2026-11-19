@@ -177,3 +177,8 @@ body #built-in .fc-btn{-webkit-touch-callout:none;-webkit-user-select:none;user-
 }
 /* round4: sheet cards. Cards in the same row are stretched to the tallest one, which left a strip under the title block of the shorter cards; the text sheet slid down into that strip when the finger/mouse left. The title block now stretches to the card bottom (it already sits above the sheet), so nothing can show beneath it. Laptop and phone. */
 body #built-in .sp-body{flex:1 1 auto}
+/* round4: fitted sheets on laptop and tablet (640 px and wider). Each text sheet is only as tall as its text needs (--sh, measured in key-features.js), so the picture stays visible above it. Phones keep the full-height sheets. */
+@media (min-width:640px){
+body #built-in .fc-ov2{top:calc(var(--rt,62%) + 24px - var(--sh,100%));height:var(--sh,auto);transform:translateY(var(--sh,100%));padding:34px 22px 16px;box-shadow:0 -10px 28px rgba(0,0,0,.3)}
+body #built-in .fc.open .fc-ov2{transform:none}
+}

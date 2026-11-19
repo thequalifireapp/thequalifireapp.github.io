@@ -127,7 +127,9 @@ function build(){document.querySelectorAll('#built-in .fc').forEach(function(c){
  o.innerHTML='<span class="t">'+t.innerHTML+'</span><span class="s">'+(sb?sb.innerHTML:'')+'</span><span class="fc-lines">'+ln.innerHTML+'</span>';
  btn.appendChild(o)})}
 function rt(){document.querySelectorAll('#built-in .fc').forEach(function(c){var b=c.querySelector('.fc-btn'),sp=c.querySelector('.sp-body');if(!b||!sp)return;
- c.style.setProperty('--rt',Math.max(0,Math.round(sp.getBoundingClientRect().top-b.getBoundingClientRect().top))+'px')})}
+ var r=Math.max(0,Math.round(sp.getBoundingClientRect().top-b.getBoundingClientRect().top));c.style.setProperty('--rt',r+'px');
+ var o=c.querySelector('.fc-ov2'),ln=o&&o.querySelector('.fc-lines');if(ln){var cs=getComputedStyle(o); /* fitted sheet height = padding + text + 24px that tucks behind the title block, never taller than the picture */
+  c.style.setProperty('--sh',Math.min(Math.round(parseFloat(cs.paddingTop)+ln.offsetHeight+parseFloat(cs.paddingBottom)+24),r+24)+'px')}})}
 function go(){build();rt()}
 go();addEventListener('load',go);addEventListener('resize',rt);
 if(document.fonts&&document.fonts.ready)document.fonts.ready.then(rt);
