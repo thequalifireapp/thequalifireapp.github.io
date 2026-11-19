@@ -219,5 +219,5 @@ html{scroll-behavior:auto}
 @media (max-width:700px){body .hero2{--ty:8}}
 /* ranking caption centred when stacked */
 @media (max-width:899px){body .rk-side{text-align:center}body .rk-cap{align-items:center;text-align:center}}
-/* round4: phone mockups row. The browser no longer decides the swipe direction: vertical pans always scroll the page, sideways scrolling is done by screens-swipe.js once a swipe is clearly horizontal. */
-@media (max-width:899px){#screens .phrow{touch-action:pan-y pinch-zoom;overscroll-behavior-x:contain}}
+/* round4: phone mockups row. The browser no longer scrolls the row sideways itself (that stole vertical swipes); the page always scrolls for any swipe, and screens-swipe.js moves the row by hand when a swipe is clearly horizontal. */
+@media (max-width:899px){#screens .phrow{overflow:hidden}}
