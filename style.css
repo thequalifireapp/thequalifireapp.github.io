@@ -219,5 +219,5 @@ html{scroll-behavior:auto}
 @media (max-width:700px){body .hero2{--ty:8}}
 /* ranking caption centred when stacked */
 @media (max-width:899px){body .rk-side{text-align:center}body .rk-cap{align-items:center;text-align:center}}
-/* round4: phone mockups row. touch-action:pan-y = the browser scrolls the page for mostly vertical swipes and passes every other swipe to screens-swipe.js, which moves the row (clearly horizontal) or scrolls the page by hand (diagonal). */
-@media (max-width:899px){#screens .phrow{touch-action:pan-y pinch-zoom;overscroll-behavior-x:contain}}
+/* round4: the mockup row must not scroll vertically by itself (first swipe was swallowed) */
+@media (max-width:899px){#screens .phrow{overflow-y:hidden}}
