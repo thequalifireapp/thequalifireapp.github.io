@@ -7,6 +7,11 @@
    Phone / tablet only (max-width:899px).
    NOTE: do not animate the row with our own requestAnimationFrame loop; two such versions (coasting, eased slide) made phone scrolling worse. */
 (function(){
+  /* DIAGNOSTIC switches (add to the page address): ?swipe=off = row scrolls natively like before round4, no script;
+     ?swipe=css = no script, page scrolls only vertically on the row (no sideways swiping at all). Normal address = this script. */
+  var q=location.search;
+  if(/[?&]swipe=off\b/.test(q)){var st=document.createElement('style');st.textContent='@media (max-width:899px){#screens .phrow{touch-action:auto!important;overscroll-behavior:auto!important}}';document.head.appendChild(st);return}
+  if(/[?&]swipe=css\b/.test(q))return;
   var row=document.querySelector('#screens .phrow');if(!row||!window.PointerEvent)return;
   var mq=matchMedia('(max-width:899px)'),LOCK=8,RATIO=2,FLICK=0.35;
   var id=null,mode=0,sx=0,sy=0,sl=0,lx=0,ly=0,lt=0,vx=0,vy=0,raf=0; /* mode: 0 undecided, 1 row, 2 page by hand */
