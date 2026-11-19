@@ -175,8 +175,5 @@ body #built-in .fc-ov2 .fc-lines,body #built-in .fc-ov2 .fc-lines *{font-size:.7
 body #built-in .fc-ov2 .fc-lines p{margin:0 0 .45em}
 body #built-in .fc-btn{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent}
 }
-/* round4: phone, lifting the finger from a Key features card. The text sheet now fades out where it is (no slide down), so nothing shows beneath the title and sentence. Opening still slides up. */
-@media (max-width:639px){
-body #built-in .fc-ov2{transition:opacity .16s ease,transform 0s linear .16s,visibility 0s linear .16s}
-body #built-in .fc.open .fc-ov2{transition:transform .38s cubic-bezier(.2,.8,.2,1),opacity 0s,visibility 0s}
-}
+/* round4: sheet cards. Cards in the same row are stretched to the tallest one, which left a strip under the title block of the shorter cards; the text sheet slid down into that strip when the finger/mouse left. The title block now stretches to the card bottom (it already sits above the sheet), so nothing can show beneath it. Laptop and phone. */
+body #built-in .sp-body{flex:1 1 auto}
