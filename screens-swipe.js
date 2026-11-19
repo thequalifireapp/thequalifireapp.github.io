@@ -1,13 +1,14 @@
-/* Phone mockups row (#screens .phrow): sideways only when a swipe is clearly horizontal, otherwise the page scrolls.
-   How it works (v2): the row is NOT scrollable by the browser (style.css: overflow:hidden on phone/tablet) and has no touch-action rule,
-   so the browser scrolls the PAGE for any finger movement, whatever the angle, and nothing can get stuck.
-   This script reads the touch (passive listeners, never blocks scrolling) and moves the row by hand only when the swipe is clearly
-   horizontal: >= LOCK px and sideways movement more than RATIO times the vertical movement. On release the row glides to the nearest
-   mockup (a quick flick goes to the next one). Phone / tablet only (max-width:899px). */
+/* Phone mockups row (#screens .phrow), v3.
+   CSS (style.css) sets touch-action:pan-y on the row: the browser scrolls the PAGE for swipes that are mostly vertical and hands every other
+   swipe to this script at full speed (pointer events). This script then decides:
+   - clearly horizontal (>= LOCK px and sideways > RATIO x vertical): the row moves with the finger, then glides to the nearest mockup
+     (a quick flick goes to the next one);
+   - anything else (diagonal): the PAGE is scrolled by hand with the finger (with a short glide on release), so no swipe is ever dead.
+   Phone / tablet only (max-width:899px). */
 (function(){
-  var row=document.querySelector('#screens .phrow');if(!row)return;
-  var mq=matchMedia('(max-width:899px)'),LOCK=10,RATIO=2,FLICK=0.35;
-  var sx=0,sy=0,sl=0,lx=0,lt=0,v=0,mode=2; /* mode: 0 undecided, 1 horizontal (we move the row), 2 page scroll / ignore */
+  var row=document.querySelector('#screens .phrow');if(!row||!window.PointerEvent)return;
+  var mq=matchMedia('(max-width:899px)'),LOCK=8,RATIO=2,FLICK=0.35;
+  var id=null,mode=0,sx=0,sy=0,sl=0,lx=0,ly=0,lt=0,vx=0,vy=0,raf=0; /* mode: 0 undecided, 1 row, 2 page by hand */
   function items(){return [].slice.call(row.children)}
   function target(hint){
     var c=row.scrollLeft+row.clientWidth/2,best=0,bd=1e9,its=items();
@@ -16,26 +17,39 @@
     var el=its[best];
     return Math.max(0,Math.min(row.scrollWidth-row.clientWidth,el.offsetLeft+el.offsetWidth/2-row.clientWidth/2));
   }
-  function settle(){
-    var hint=Math.abs(v)>FLICK?(v<0?1:-1):0; /* finger moved left (v<0): next mockup */
-    var to=target(hint);
-    row.style.scrollSnapType='';
-    try{row.scrollTo({left:to,behavior:'smooth'})}catch(e){row.scrollLeft=to}
+  function page(dy){try{window.scrollBy({top:dy,left:0,behavior:'instant'})}catch(e){window.scrollBy(0,dy)}}
+  function glide(){ /* short inertia for the by-hand page scroll */
+    if(Math.abs(vy)<0.03){raf=0;return}
+    page(-vy*16);vy*=0.94;raf=requestAnimationFrame(glide);
   }
-  row.addEventListener('touchstart',function(e){
-    if(!mq.matches||e.touches.length!==1){mode=2;return}
-    var t=e.touches[0];sx=lx=t.clientX;sy=t.clientY;sl=row.scrollLeft;lt=e.timeStamp;v=0;mode=0;
+  function end(){
+    if(id===null)return;id=null;
+    if(mode===1){
+      var to=target(Math.abs(vx)>FLICK?(vx<0?1:-1):0);
+      row.style.scrollSnapType='';
+      try{row.scrollTo({left:to,behavior:'smooth'})}catch(e){row.scrollLeft=to}
+    }else if(mode===2&&Math.abs(vy)>0.15){raf=requestAnimationFrame(glide)}
+    mode=0;
+  }
+  row.addEventListener('pointerdown',function(e){
+    if(e.pointerType==='mouse'||!mq.matches)return;
+    if(raf){cancelAnimationFrame(raf);raf=0}
+    id=e.pointerId;mode=0;sx=lx=e.clientX;sy=ly=e.clientY;sl=row.scrollLeft;lt=e.timeStamp;vx=vy=0;
   },{passive:true});
-  row.addEventListener('touchmove',function(e){
-    if(mode===2)return;
-    var t=e.touches[0],dx=t.clientX-sx,dy=t.clientY-sy,ax=Math.abs(dx),ay=Math.abs(dy);
+  row.addEventListener('pointermove',function(e){
+    if(e.pointerId!==id)return;
+    var dx=e.clientX-sx,dy=e.clientY-sy,ax=Math.abs(dx),ay=Math.abs(dy);
     if(mode===0){
-      if(ax>=LOCK&&ax>RATIO*ay){mode=1;row.style.scrollSnapType='none'}
-      else if(ay>=LOCK){mode=2;return}   /* clearly not sideways: the page scrolls */
-      else return;                        /* still too small to tell */
+      if(ax<LOCK&&ay<LOCK)return;
+      if(ax>=LOCK&&ax>RATIO*ay){mode=1;row.style.scrollSnapType='none';try{row.setPointerCapture(id)}catch(_){}}
+      else{mode=2}
     }
-    var dt=e.timeStamp-lt;if(dt>0)v=0.8*v+0.2*((t.clientX-lx)/dt);lx=t.clientX;lt=e.timeStamp;
-    row.scrollLeft=sl-dx;
+    var dt=e.timeStamp-lt;
+    if(dt>0){vx=0.8*vx+0.2*((e.clientX-lx)/dt);vy=0.8*vy+0.2*((e.clientY-ly)/dt)}
+    if(mode===1)row.scrollLeft=sl-dx;
+    else page(-(e.clientY-ly));
+    lx=e.clientX;ly=e.clientY;lt=e.timeStamp;
   },{passive:true});
-  ['touchend','touchcancel'].forEach(function(n){row.addEventListener(n,function(){if(mode===1)settle();mode=2},{passive:true})});
+  ['pointerup','pointercancel'].forEach(function(t){row.addEventListener(t,function(e){if(e.pointerId===id)end()})});
+  row.addEventListener('lostpointercapture',function(e){if(e.pointerId===id)end()});
 })();
