@@ -13,6 +13,8 @@
   form.addEventListener('submit',function(e){
     e.preventDefault();
     msg.className='st-msg';
+    var ae=form.elements.email;
+    if(ae&&!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test((ae.value||'').trim())){msg.className='st-msg err';msg.textContent='Please use a valid address.';ae.focus();return}
     if(!form.checkValidity()){form.reportValidity();return}
     var ep=form.getAttribute('data-endpoint');
     if(!ep){msg.textContent='The form is not live yet. Please write to thequalifireapp@gmail.com.';return}
@@ -25,6 +27,9 @@
       form.reset();
       msg.className='st-msg ok';msg.textContent='Thank you for filling in the form. Your application is under revision.';
       form.classList.add('done');
+      var ag=document.createElement('button');ag.type='button';ag.className='again';ag.textContent='More';
+      ag.addEventListener('click',function(){form.classList.remove('done');msg.className='st-msg';msg.textContent='';send.disabled=false;ag.remove();var e1=document.getElementById('ap-use');if(e1)e1.focus()});
+      msg.appendChild(ag);
     }).catch(function(){
       send.disabled=false;msg.textContent='Could not send. Please write to thequalifireapp@gmail.com.';
     });

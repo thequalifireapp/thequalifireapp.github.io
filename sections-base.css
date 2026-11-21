@@ -4,3 +4,7 @@
 :root{--ed-white:#ffffff;--ed-black:#0A0A0A}:root[data-theme="light"]{--ed-white:#0A0A0A;--ed-black:#ffffff}
 section#socials{padding-top:64px;padding-bottom:64px}
 @media (max-width:700px){section#socials{padding-top:48px;padding-bottom:48px}}
+
+.cs .inl .err{flex:1 1 100%;color:#C0392B;font-weight:700;font-size:.88rem}
+#status .st-msg.err{color:#C0392B;font-weight:700}
+.again{background:none;border:0;padding:0;margin-left:10px;font:inherit;font-weight:700;color:var(--ytext);text-decoration:underline;cursor:pointer}
